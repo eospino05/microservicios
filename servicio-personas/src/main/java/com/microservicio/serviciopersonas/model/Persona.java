@@ -16,6 +16,8 @@ public class Persona {
     private String nombre;
     private String apellidos;
     private LocalDate fechaNacimiento;
+    @Transient
+    private Integer puerto; 
 
     public Long getId() {
         return id;
@@ -56,4 +58,14 @@ public class Persona {
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+	public Integer getPuerto() {
+		return puerto;
+	}
+
+	public void setPuerto(Integer puerto) {
+		this.puerto = puerto;
+	}
+    
+    
 }

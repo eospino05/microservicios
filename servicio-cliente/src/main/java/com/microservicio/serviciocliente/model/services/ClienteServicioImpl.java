@@ -21,7 +21,7 @@ public class ClienteServicioImpl implements ClienteServicio {
 	
 	@Override
 	public List<Grupo> findAll() {
-		List<Persona> list = Arrays.asList(restTemplate.getForObject("http://localhost:8081/api/v1/personas", Persona[].class));
+		List<Persona> list = Arrays.asList(restTemplate.getForObject("http://localhost:8001/api/v1/personas", Persona[].class));
 		
 		return list.stream().map(p -> new Grupo(p, "Grupo A")).collect(Collectors.toList());
 	}
@@ -32,7 +32,7 @@ public class ClienteServicioImpl implements ClienteServicio {
 		Map<String, String> pathVariable = new HashMap<String, String>();
 		pathVariable.put("id", id.toString());
 		
-		Persona persona = restTemplate.getForObject("http://localhost:8081/api/v1/personas/{id}", Persona.class, pathVariable);
+		Persona persona = restTemplate.getForObject("http://localhost:8001/api/v1/personas/{id}", Persona.class, pathVariable);
 		
 		return  new Grupo(persona, nmGrupo);
 	}

@@ -1,6 +1,7 @@
 package com.microservicio.serviciopersonas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,33 +9,42 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import com.microservicio.serviciopersonas.dao.IPersonaRepository;
+import java.util.stream.Collectors;
+
 import com.microservicio.serviciopersonas.exception.NotFoundException;
-import com.microservicio.serviciopersonas.exception.ServicesException;
 import com.microservicio.serviciopersonas.model.Persona;
 import com.microservicio.serviciopersonas.services.IPersosnaServices;
 import com.microservicio.serviciopersonas.utils.Constans;
 
 
 @RestController
-@RequestMapping(Constans.URL_BASE_PERSONAS)
+//@RequestMapping(Constans.URL_BASE_PERSONAS)
 public class PersonaRestController{
 
     @Autowired
     IPersosnaServices persosnaServices;
+    
+    @Value("${server.port}")
+    private Integer puerto;
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Persona>> list(){
 
          try {
-             return new ResponseEntity(persosnaServices.list(), HttpStatus.OK);
+           
+             return new ResponseEntity(persosnaServices.list().stream().map(p -> {
+            	 p.setPuerto(puerto);
+            	 return p;
+             }).collect(Collectors.toList()), HttpStatus.OK);
+              
+             
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity load(@PathVariable("id") Long id){
+    
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity buscar(@PathVariable("id") Long id){
         Optional<Persona> op;
 
          try {
@@ -42,20 +52,20 @@ public class PersonaRestController{
             op = persosnaServices.load(id);
 
             if(op.isPresent()){
-                return new ResponseEntity(op.get(), HttpStatus.OK);
+            	Persona p = op.get();
+            	p.setPuerto(puerto);
+                return new ResponseEntity(p, HttpStatus.OK);
             }else{
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
-                //ResponseEntity(Persona(), HttpStatus.OK)
             }
 
-
-            //}catch (e:ServicesException){
-            //    ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }catch (Exception n){
              return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
     }
+
+   
 
     @PostMapping
     public ResponseEntity  insert(@RequestBody Persona persona){

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.microservicio.serviciocliente.model.Persona;
 
-@FeignClient(name = "servicio-personas", url = "http://localhost:8081/api/v1/personas")
+@FeignClient(name = "servicio-personas")
 public interface IClienteFeing {
 	
-	@GetMapping
+	@GetMapping("/listar")
     public ResponseEntity<List<Persona>> list();
     
-	@GetMapping("/{id}")
+	@GetMapping("/buscar/{id}")
     public ResponseEntity<Persona> load(@PathVariable("id") Long id);
 
 }

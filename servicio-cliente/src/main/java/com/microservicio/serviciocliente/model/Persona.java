@@ -10,6 +10,8 @@ public class Persona {
     private String apellidos;
     private LocalDate fechaNacimiento;
     
+    private Integer puerto; 
+    
 	public Long getId() {
 		return id;
 	}
@@ -41,5 +43,12 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
     
+	public Integer getPuerto() {
+		return puerto;
+	}
+
+	public void setPuerto(Integer puerto) {
+		this.puerto = puerto;
+	}
     
 }
