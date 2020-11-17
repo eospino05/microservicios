@@ -1,6 +1,5 @@
 package com.microservicio.serviciocliente.model.services;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import com.microservicio.serviciocliente.model.Grupo;
 import com.microservicio.serviciocliente.model.Persona;
 
-@Service
+@Service("servicioRestTemplate")
 public class ClienteServicioImpl implements ClienteServicio {
 
 	@Autowired
