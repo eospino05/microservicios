@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicio.serviciocliente.model.Grupo;
+import com.microservicio.serviciocliente.model.Persona;
 import com.microservicio.serviciocliente.model.services.ClienteServicio;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
-@RequestMapping("/api/cliente/personas")
+//@RequestMapping("/api/cliente/personas")
 public class ClienteController {
 
 	@Autowired
@@ -33,6 +35,7 @@ public class ClienteController {
 	        }
 	    }
 
+	 	//@HystrixCommand(fallbackMethod = "buscarAlterno")
 	    @GetMapping("/{id}/grupo/{grupo}")
 	    public ResponseEntity load(@PathVariable("id") Long id, @PathVariable("grupo") String grupo){
 
@@ -44,4 +47,18 @@ public class ClienteController {
 
 	        }
 	    }
+	    
+	    public ResponseEntity buscarAlterno(Long id, String grupo) {
+	    	Persona p = new Persona();
+	    	p.setId(id);
+	    	p.setNombre("Pepito");
+	    	p.setIdentificacion("123322");
+	    	p.setApellidos("Perez Prieto");
+	    	
+	    	Grupo g = new Grupo(p, grupo);
+	    	
+	    	return new ResponseEntity(g, HttpStatus.OK);
+	    }
+	    
+	    
 }

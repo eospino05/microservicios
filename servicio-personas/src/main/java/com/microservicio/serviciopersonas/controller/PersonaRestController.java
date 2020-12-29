@@ -44,9 +44,16 @@ public class PersonaRestController{
     }
     
     @GetMapping("/buscar/{id}")
-    public ResponseEntity buscar(@PathVariable("id") Long id){
+    public ResponseEntity buscar(@PathVariable("id") Long id) throws Exception{
         Optional<Persona> op;
-
+       /*
+        Boolean b = true;
+        if(b)
+   		 	throw new Exception("Servisio no disponible");
+        */
+        
+        //Thread.sleep(2000L);
+        
          try {
 
             op = persosnaServices.load(id);
