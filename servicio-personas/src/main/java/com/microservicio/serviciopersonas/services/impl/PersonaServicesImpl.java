@@ -2,6 +2,7 @@ package com.microservicio.serviciopersonas.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.microservicio.serviciopersonas.dao.IPersonaRepository;
 import com.microservicio.serviciopersonas.exception.NotFoundException;
@@ -19,6 +20,7 @@ public class PersonaServicesImpl implements IPersosnaServices {
     IPersonaRepository personaRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Persona> list() throws ServicesException {
 
         try {
@@ -31,6 +33,7 @@ public class PersonaServicesImpl implements IPersosnaServices {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Persona> load(Long id) throws ServicesException {
         Optional<Persona> op;
 
@@ -49,6 +52,7 @@ public class PersonaServicesImpl implements IPersosnaServices {
     }
 
     @Override
+    @Transactional
     public Persona save(Persona persona) throws  ServicesException{
 
         try {
