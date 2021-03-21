@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.microservicio.serviciopersonas.dao.IPersonaRepository;
 import com.microservicio.serviciopersonas.exception.NotFoundException;
 import com.microservicio.serviciopersonas.exception.ServicesException;
-import com.microservicio.serviciopersonas.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 import com.microservicio.serviciopersonas.services.IPersosnaServices;
 
 import java.util.List;

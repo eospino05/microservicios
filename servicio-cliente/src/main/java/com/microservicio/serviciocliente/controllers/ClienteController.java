@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicio.serviciocliente.model.Grupo;
-import com.microservicio.serviciocliente.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 import com.microservicio.serviciocliente.model.services.ClienteServicio;
 
 @RefreshScope

@@ -3,7 +3,7 @@ package com.microservicio.serviciocliente.model.services;
 import java.util.List;
 
 import com.microservicio.serviciocliente.model.Grupo;
-import com.microservicio.serviciocliente.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 
 public interface ClienteServicio {
 	public List<Grupo> findAll();

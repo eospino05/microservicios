@@ -1,4 +1,4 @@
-package com.microservicio.serviciopersonas.model;
+package com.microservicio.commons.entity.model;
 
 
 import java.time.LocalDate;

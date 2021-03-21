@@ -1,5 +1,6 @@
 package com.microservicio.serviciocliente.model;
 
+import com.microservicio.commons.entity.model.Persona;
 
 public class Grupo {
 	

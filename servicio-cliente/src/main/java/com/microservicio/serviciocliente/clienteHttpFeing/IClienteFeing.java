@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import com.microservicio.serviciocliente.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 
 @FeignClient(name = "servicio-personas")
 public interface IClienteFeing {

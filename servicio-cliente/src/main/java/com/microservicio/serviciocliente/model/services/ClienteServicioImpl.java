@@ -14,9 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.microservicio.serviciocliente.model.Grupo;
-import com.microservicio.serviciocliente.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 
-import io.micrometer.core.ipc.http.HttpSender.Method;
 
 @Service("servicioRestTemplate")
 public class ClienteServicioImpl implements ClienteServicio {

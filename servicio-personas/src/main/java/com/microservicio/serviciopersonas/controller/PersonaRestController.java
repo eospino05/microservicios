@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.microservicio.serviciopersonas.exception.NotFoundException;
-import com.microservicio.serviciopersonas.model.Persona;
+import com.microservicio.commons.entity.model.Persona;
 import com.microservicio.serviciopersonas.services.IPersosnaServices;
 
 @RestController
