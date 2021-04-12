@@ -1,15 +1,21 @@
 package com.microservicio.commons.entity.model;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Personas")
-public class Persona {
+public class Persona implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1328087623282241886L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String identificacion;
