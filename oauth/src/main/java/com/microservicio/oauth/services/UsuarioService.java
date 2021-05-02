@@ -18,7 +18,7 @@ import com.microservicio.commons.entity.model.Usuario;
 import com.microservicio.oauth.client.IUsuarioFeignClient;
 
 @Service
-public class UsuarioService implements UserDetailsService{
+public class UsuarioService implements UserDetailsService, IUsuarioService{
 
 	private Logger log = LoggerFactory.getLogger(UsuarioService.class);
 	@Autowired
@@ -44,6 +44,11 @@ public class UsuarioService implements UserDetailsService{
 		log.info("Usuario logueado: " + username);
 		
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, listAuthority);
+	}
+
+	@Override
+	public Usuario findByUsername(String username) {
+		return client.findByUsername(username);
 	}
 
 }
