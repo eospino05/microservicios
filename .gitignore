@@ -1,0 +1,6 @@
+
+/servicio-personas/bin/
+/eureka-server/.mvn/
+/oauth/.mvn/
+/servicio-usuarios/.mvn/
+
