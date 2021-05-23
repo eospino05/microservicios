@@ -2,7 +2,6 @@ package com.microservicio.eurekazuul.oauth;
 
 import java.util.Arrays;
 
-import javax.servlet.FilterRegistration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -39,10 +38,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/api/security/oauth/**").permitAll()
-		.antMatchers(HttpMethod.GET, "/api/personas/listar", "/api/cliente/listar", "/api/usuarios/usuarios").permitAll()
+		.antMatchers(HttpMethod.GET, "/api/personas/listar", 
+									"/api/cliente/listar", 									
+									"/api/cliente/obtener-config").permitAll()
 		.antMatchers(HttpMethod.GET, "/api/personas/buscar/{id}", 
-				"/api/cliente/buscar/{id}/grupo/{grupo}", 
-				"/api/usuarios/usuarios/{id}").hasAnyRole("ADMIN", "USER")
+									"/api/cliente/buscar/{id}/grupo/{grupo}", 
+									"/api/usuarios/usuarios/search/buscar-usuario",
+									"/api/usuarios/usuarios/{id}").hasAnyRole("ADMIN", "USER")
 		.antMatchers("/api/personas/**", "/api/cliente/**", "/api/usuarios/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());

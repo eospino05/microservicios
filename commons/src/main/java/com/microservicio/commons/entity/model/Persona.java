@@ -3,10 +3,16 @@ package com.microservicio.commons.entity.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+
 import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Personas")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Persona implements Serializable{
 
     /**
@@ -25,53 +31,5 @@ public class Persona implements Serializable{
     @Transient
     private Integer puerto; 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-	public Integer getPuerto() {
-		return puerto;
-	}
-
-	public void setPuerto(Integer puerto) {
-		this.puerto = puerto;
-	}
-    
     
 }

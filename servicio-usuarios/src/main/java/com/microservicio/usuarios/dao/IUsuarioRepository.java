@@ -14,6 +14,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
 	@RestResource(path="buscar-usuario")
 	public Usuario findByUsername(@Param("username") String username);
 	
+	
 	@Query("select u from Usuario u where u.username=?1")
 	public Usuario obtenerPorUsername(String usuername);
 }
